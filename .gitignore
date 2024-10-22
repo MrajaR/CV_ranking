@@ -1,2 +1,5 @@
-cvranking-env
-__pycache__
+__pycache__/
+.env
+cvranking-env/
+user_cv_pdf/
+iseng.ipynb

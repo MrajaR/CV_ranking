@@ -1,45 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Researcher Job Application</title>
-    <link rel="stylesheet" href="static/styles.css">
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Basic Styling */
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #eef2f7;
+        margin: 0;
+        padding: 0;
+        color: #333;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #ffffff;
+        padding: 30px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+
+      h1 {
+        font-size: 26px;
+        color: #007bff;
+        text-align: center;
+        margin-bottom: 40px;
+        font-weight: 500;
+      }
+
+      label {
+        font-size: 16px;
+        color: #555;
+        font-weight: 500;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      input[type="file"] {
+        display: block;
+        margin-top: 10px;
+        font-size: 14px;
+      }
+
+      .submit-btn:hover {
+        background-color: #0056b3;
+        box-shadow: 0 6px 14px rgba(0, 123, 255, 0.5);
+      }
+
+      #file-name {
+        font-size: 14px;
+        color: #888;
+      }
+
+      textarea {
+        width: 100%;
+        height: 180px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        padding: 12px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        resize: vertical;
+      }
+
+      h2 {
+        font-size: 22px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        color: #333;
+        font-weight: 500;
+      }
+
+      input[type="file"] {
+        padding: 10px;
+        border: 1px solid #007bff;
+        border-radius: 5px;
+        background-color: #f8f9fa;
+        color: #333;
+        cursor: pointer;
+        width: 65%;
+      }
+
+      #ranking-results {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border-radius: 6px;
+        border: 1px solid #e9ecef;
+      }
+
+      .spinner {
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+        border-top: 4px solid #007bff;
+        width: 20px;
+        height: 20px;
+        animation: spin 1s linear infinite;
+        display: inline-block;
+        margin-left: 10px;
+        vertical-align: middle;
+      }
+      .dataframe {
+        border: floralwhite;
+        padding: 5px 5px 5px 5px;
+        width: 100%;
+        text-align: center;
+      }
+      .file-upload {
+        display: flex;
+        align-items: center;
+      }
+
+      .submit-btn {
+        display: inline-flex;
+        align-items: center;
+        margin-left: 20px;
+        padding: 10px 10px 10px 10px;
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+        transition: all 0.3s ease;
+      }
+      .rank-btn {
+        align-items: center;
+        display: inline-block;
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+        transition: all 0.3s ease;
+      }
+      select {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #007bff;
+        border-radius: 5px;
+        background-color: #f8f9fa;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      select:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+
+      option {
+        padding: 10px;
+        background-color: #fff;
+        color: #333;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body>  
     <div class="container">
-        <h1>Apply for the AI Researcher Position</h1>
-        <form id="cv-upload-form" action="/process-uploaded_cv" method="POST" enctype="multipart/form-data">
-            <textarea name="job_description">
-                About the job
-                We are a leading shipping and logistic company in Indonesia with the forefront of AI innovation, dedicated to pushing the boundaries of technology. We seek a talented AI Researcher to join our team and contribute to cutting-edge projects.
+      <h1>Upload Your CV and Get Your Dream Job</h1>
+      <form
+        id="cv-upload-form"
+        action="/process-uploaded_cv"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <textarea name="job_description" id="job_description" hidden></textarea>
 
-                Responsibilities:
-                Conduct data mining to uncover valuable insights and patterns.
-                Optimize AI systems for performance and scalability.
-                Collaborate with a multidisciplinary team to drive research initiatives.
-                Stay updated with the latest advancements in AI and machine learning.
+        <label for="resume">Upload your CV (PDF):</label>
+        <div class="form-group file-upload">
+          <input type="file" id="resume" name="file" accept=".pdf" required />
+          <button id="submitcv-btn" class="submit-btn">
+            Submit Application
+            <div id="spinner-cv" class="spinner" style="display: none"></div>
+          </button>
+        </div>
 
-                Qualifications:
-                Advanced degree in Computer Science, Data Science, or a related field.
-                Proven experience in data mining and AI system optimization.
-                Strong programming skills in Python, R, or similar languages.
-                Excellent problem-solving and analytical abilities.
-                Willing to be placed in Surabaya.
-            </textarea>
+        <!-- Area untuk menampilkan pesan hasil upload -->
+        <div id="upload-status"></div>
+      </form>
 
-            <label for="resume">Upload your CV (PDF):</label><br>
-            <input type="file" id="resume" name="file" accept=".pdf" required><br><br>
-            <span id="file-name"></span><br><br>
-
-            <input type="submit" value="Submit Application" class="submit-btn">
-        </form>
-
-        <h2>Rank Applicants</h2>
-        <button id="rank-applicants-btn" class="submit-btn">Rank Applicants</button>
-        <div id="ranking-results"></div> <!-- This div will display the ranking results -->
+      <h2>Rank Applicants</h2>
+      <label for="job-position">Choose a job position:</label>
+      <select id="job-position" name="job_position">
+        <option value="ai_researcher">AI Researcher</option>
+        <option value="account_manager">Account Manager</option>
+        <option value="Senior_Customer_Service_Manager">Senior Customer Service Manager</option>
+        <option value="senior_manager">Senior Manager</option>
+        <option value="satpam">SATPAM</option>
+        <option value="magang">magang</option>
+      </select>
+      <button id="rank-applicants-btn" class="rank-btn">
+        Rank Applicants
+        <div id="spinner" class="spinner" style="display: none"></div>
+      </button>
+      <div id="ranking-results"></div>
     </div>
 
     <script src="static/scripts.js"></script>
-</body>
+  </body>
 </html>

@@ -2,6 +2,9 @@ pytesseract
 python-dotenv
 requests
 numpy
+pandas
 pdf2image
 Flask
 Flask_Cors
+langchain
+langchain-groq
