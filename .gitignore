@@ -4,3 +4,4 @@ cvranking-env/
 user_cv_pdf/
 iseng.ipynb
 CV_CHROMADB
+.venv

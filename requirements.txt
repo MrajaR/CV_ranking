@@ -1,15 +1,21 @@
-# pytesseract <<< for previous version
+# Dev environment
+pip
+autopep8
+
+# App
+flask==3.0.3
+
 python-dotenv
 requests
-numpy
-pandas
-# pdf2image <<< for previous version
-Flask
-Flask_Cors
-langchain
-langchain-groq
-chromadb
-sentence-transformers
-langchain_community
-langchain_chroma
-rank_bm25
+numpy==1.26.4
+pandas==2.2.3
+Flask==3.0.3
+Flask_Cors==5.0.0
+langchain==0.3.4
+langchain-groq==0.2.0
+chromadb==0.5.15
+sentence-transformers==3.2.1
+langchain_community==0.3.3
+langchain_chroma==0.1.4
+rank_bm25==0.2.2
+langchain-core==0.3.12
