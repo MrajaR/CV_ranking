@@ -1,10 +1,15 @@
-pytesseract
+# pytesseract <<< for previous version
 python-dotenv
 requests
 numpy
 pandas
-pdf2image
+# pdf2image <<< for previous version
 Flask
 Flask_Cors
 langchain
 langchain-groq
+chromadb
+sentence-transformers
+langchain_community
+langchain_chroma
+rank_bm25
